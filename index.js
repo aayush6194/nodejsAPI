@@ -25,8 +25,15 @@ const storage = new GridFsStorage({
   }
 });
 
+const upload = multer({ storage });
+
 app.get('/',  (req, res) => {
  res.send({active: true});
 });
+
+app.post('/upload', upload.single('file'),  (req, res) => {
+  res.redirect('https://www.aayushh.com/Message/');
+});
+
 
 app.listen(port);
